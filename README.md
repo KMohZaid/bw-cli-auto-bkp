@@ -27,7 +27,12 @@ bw config server  https://bitwarden.garudalinux.org
 > NOTE : Session string is valid for specific time, i don't know how long it is, but do check log file to ensure it is not expired
 > you could specify your master password directly in command in script, but it is not good idea to do so.
 
-5. Edit config variable
+5. Edit config variable (store them in .env instead of directly editing shell script)
+
+```
+RCLONE_REMOTE="remote-name:folder" # edit this to your rclone remote and path, or setup remote named gdrive and it will auto make folder called bitwarden-backups in that remote 
+BW_SESSION="" # get it from `bw unlock --raw`
+```
 
 6. Setup cronjob (specify your path)
 ```
