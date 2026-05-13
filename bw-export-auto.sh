@@ -3,8 +3,12 @@
 # Configuration
 EXPORT_DIR="."
 RETENTION_DAYS=10
-RCLONE_REMOTE="gdrive:bitwarden-backups" # edit this to your rclone remote and path
-BW_SESSION="BW_SESSION" # get it from `bw unlock --raw`
+set -a
+source .env
+set +a
+
+RCLONE_REMOTE="${RCLONE_REMOTE:-gdrive:bitwarden-backups}" # default is specified but put custom one in .env for good practice
+BW_SESSION="${BW_SESSION:?BW_SESSION is required}"         # get it from `bw unlock --raw` and store in .env
 
 # Date and filename setup
 CURRENT_DATE=$(date '+%Y-%m-%d_%H-%M-%S')
